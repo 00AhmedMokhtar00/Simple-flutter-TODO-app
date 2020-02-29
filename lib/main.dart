@@ -15,7 +15,10 @@ class _MyAppState extends State<MyApp> {
 
   getData()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    todo = prefs.getStringList('TODO')??[];
+    setState(() {
+      todo = prefs.getStringList('TODO')??[];
+    });
+
   }
 
   saveData() async{
@@ -32,6 +35,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('My TODO List'),),
